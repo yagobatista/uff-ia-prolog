@@ -1,13 +1,28 @@
+#
+compilador de prolog gprolog
+
+#instalação(linux)
+sudo apt install gprolog
+
+#uso
+gplc index.pro && ./index
+
+paises que usam
+#Perguntas
+
+01 - Avioes que a embraer fabricou?
+02 - Avioes que a embraer fabricou no brasil?
+03 - Fabricantes que fabricam aviões em paises diferentes  
+04 - Empresa que usam avioes da embraer 
+05 - Fabricantes que fabricam aviões em paises diferentes da sua cede
+06 - Empresas que usam aviões fabricados por fabricantes diferentes?
+
+03 - Avioes de empresas francesas
+#Referencias textos base
+
 https://pt.wikipedia.org/wiki/Embraer
 https://pt.wikipedia.org/wiki/Airbus
 https://pt.wikipedia.org/wiki/Boeing
-https://pt.wikipedia.org/wiki/Bombardier
-
-pais com mais empresas
+https://pt.wikipedia.org/wiki/Bombardier_Aerospace
 
 
-paises que usam
-
-04 - avioes que a embraer fabrica
-03 - avioes de empresas francesas
-01 - empresa que usam avioes da embraer 
