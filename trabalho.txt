@@ -12,12 +12,13 @@ paises que usam
 
 01 - Avioes que a embraer fabricou?
 02 - Avioes que a embraer fabricou no brasil?
-03 - Fabricantes que fabricam aviões em paises diferentes  
-04 - Empresa que usam avioes da embraer 
-05 - Fabricantes que fabricam aviões em paises diferentes da sua cede
-06 - Empresas que usam aviões fabricados por fabricantes diferentes?
+03 - Empresa que usam avioes da embraer
+04 - Aviõe utilizados por empresa francesas
+05 - Fabricantes que fabricam avioes em paises diferente da sua sede
 
-03 - Avioes de empresas francesas
+06 - Fabricantes que fabricam aviões em mais de um pais  
+07 - Empresas que usam aviões de fabricante diferentes?
+
 #Referencias textos base
 
 https://pt.wikipedia.org/wiki/Embraer
@@ -25,4 +26,5 @@ https://pt.wikipedia.org/wiki/Airbus
 https://pt.wikipedia.org/wiki/Boeing
 https://pt.wikipedia.org/wiki/Bombardier_Aerospace
 
-
+https://stackoverflow.com/questions/16046192/prolog-find-minimum-in-list-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://stackoverflow.com/questions/1468150/how-do-i-find-all-solutions-to-a-goal-in-prolog?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
