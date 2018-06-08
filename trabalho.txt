@@ -12,12 +12,15 @@ paises que usam
 
 01 - Avioes que a embraer fabricou?
 02 - Avioes que a embraer fabricou no brasil?
-03 - Empresa que usam avioes da embraer
-04 - Aviõe utilizados por empresa francesas
+03 - Empresas que usam avioes da embraer
+04 - Aviões utilizados por empresa francesas
 05 - Fabricantes que fabricam avioes em paises diferente da sua sede
+06 - Quanto a embraer gastou em cada ano?
+07 - Avioes fabricados em um determinado pais?
+08 - Em quais paises o airbus fabrica aviões
+09 - Quais modelos da bombardier a american_airlines utiliza?
+10 - Onde é a sede da empresa que fabrica o boeing_747?
 
-06 - Fabricantes que fabricam aviões em mais de um pais  
-07 - Empresas que usam aviões de fabricante diferentes?
 
 #Referencias textos base
 
@@ -28,3 +31,146 @@ https://pt.wikipedia.org/wiki/Bombardier_Aerospace
 
 https://stackoverflow.com/questions/16046192/prolog-find-minimum-in-list-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 https://stackoverflow.com/questions/1468150/how-do-i-find-all-solutions-to-a-goal-in-prolog?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://rodrigorgs.github.io/aulas/mata56/
+
+
+
+
+/* utilizam(aviao, empresa) */
+utilizam(erj-145, british_airways).
+utilizam(erj-190, american_airline).
+utilizam(crj-100, lufthansa).
+utilizam(a300, air_france).
+utilizam(a320, air_inter).
+utilizam(a321, lufthansa).
+utilizam(er777-300, cathay_pacific).
+
+/* empresa(nome, sede) */
+empresa(british_airways, inglaterra).
+empresa(american_airlines, estados_unidos).
+empresa(lufthansa, alemanha).
+empresa(air_inter, franca).
+empresa(air_france, franca).
+empresa(cathay_pacific, china).
+
+/* fabricantes(montadoras, sede)*/
+fabricantes(embraer, brasil).
+fabricantes(bombardier, canada).
+fabricantes(boeing, estados_unidos).
+fabricantes(airbus, franca).
+
+
+/* fabricacao(montadoras, aviao, pais) */
+fabricacao(embraer, legacy_600, china).
+fabricacao(embraer, legacy_650, china).
+fabricacao(embraer, phenom, brasil).
+fabricacao(embraer, kc-390, brasil).
+fabricacao(embraer, erj-145, brasil).
+fabricacao(embraer, erj-190, brasil).
+fabricacao(boeing, boeing_747, estados_unidos).
+fabricacao(boeing, er777-300, estados_unidos).
+fabricacao(bombardier, crj-100, canada).
+fabricacao(bombardier, tearjet-40, canada).
+fabricacao(airbus, a300, franca).
+fabricacao(airbus, a320, china).
+fabricacao(airbus, a321, estados_unidos).
+
+
+lucro(embraer, 2016, 0.5).
+lucro(embraer, 2015, 0.24).
+
+receita(embraer, 2016, 21.435).
+receita(embraer, 2015, 20.301).
+
+p1(Avioes):- fabricacao(embraer, Avioes, _).
+p2(Avioes):- fabricacao(embraer, Avioes, brasil).
+p3(Empresas):- fabricacao(embraer, Avioes, _), utilizam(Avioes, Empresas).
+p4(Avioes):- empresa(Empresas, franca), utilizam(Avioes, Empresas).
+p5(Fabricante, Pais):- fabricantes(Fabricante, Sede), fabricacao(Fabricante, _, Pais), Sede \= Pais.
+p6(Gasto, Ano):- lucro(_, Ano, Lucro), receita(_, Ano, Receita), Gasto is Receita - Lucro.
+p7(Avioes, Pais):- fabricacao(_, Avioes, Pais).
+p8(Avioes, Pais):- fabricacao(airbus, Avioes, Pais).
+p9(Avioes):- fabricacao(bombardier, Avioes, Pais), utilizam(Avioes, lufthansa).
+p10(Sede):- fabricacao(Empresa, boeing_747, _), fabricantes(Empresa, Sede).
+#output
+
+| ?- p1(Avioes).
+
+Avioes = legacy_600
+
+Avioes = legacy_650
+
+Avioes = phenom
+
+Avioes = kc-390
+
+Avioes = erj-145
+
+Avioes = erj-190
+
+
+| ?- p2(Avioes).
+
+Avioes = phenom
+
+Avioes = kc-390
+
+Avioes = erj-145
+
+Avioes = erj-190
+
+
+| ?- p3(Empresas).
+
+Empresas = british_airways
+
+Empresas = american_airline
+
+
+| ?- p4(Avioes).
+
+Avioes = a320
+
+Avioes = a300
+
+| ?- p5(Fabricantes, Pais).
+
+Fabricantes = embraer
+Pais = china ? a
+
+Fabricantes = embraer
+Pais = china
+
+Fabricantes = airbus
+Pais = china
+
+Fabricantes = airbus
+Pais = estados_unidos
+
+| ?- p6(Gatos, Ano).
+
+Ano = 2016
+Gatos = 20.934999999999999
+
+Ano = 2015
+Gatos = 20.061
+
+| ?-  p7(Avioes, franca).
+
+Avioes = a300
+
+| ?- p8(Pais).
+
+Pais = franca
+
+Pais = china
+
+Pais = estados_unidos
+
+| ?- p9(Avioes).
+
+Avioes = crj-100 
+
+| ?- p10(Sede).
+
+Sede = estados_unidos

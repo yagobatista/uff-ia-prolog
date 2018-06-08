@@ -13,6 +13,7 @@ empresa(american_airlines, estados_unidos).
 empresa(lufthansa, alemanha).
 empresa(air_inter, franca).
 empresa(air_france, franca).
+empresa(cathay_pacific, china).
 
 /* fabricantes(montadoras, sede)*/
 fabricantes(embraer, brasil).
@@ -36,12 +37,29 @@ fabricacao(airbus, a300, franca).
 fabricacao(airbus, a320, china).
 fabricacao(airbus, a321, estados_unidos).
 
+
+lucro(embraer, 2016, 0.5).
+lucro(embraer, 2015, 0.24).
+
+receita(embraer, 2016, 21.435).
+receita(embraer, 2015, 20.301).
+
 p1(Avioes):- fabricacao(embraer, Avioes, _).
 p2(Avioes):- fabricacao(embraer, Avioes, brasil).
 p3(Empresas):- fabricacao(embraer, Avioes, _), utilizam(Avioes, Empresas).
 p4(Avioes):- empresa(Empresas, franca), utilizam(Avioes, Empresas).
 p5(Fabricante, Pais):- fabricantes(Fabricante, Sede), fabricacao(Fabricante, _, Pais), Sede \= Pais.
-
-% p3(Empresas):- fabricacao(embraer, Avioes, _), Pais .
+p6(Gasto, Ano):- lucro(_, Ano, Lucro), receita(_, Ano, Receita), Gasto is Receita - Lucro.
+p7(Avioes, Pais):- fabricacao(_, Avioes, Pais).
+p8(Avioes, Pais):- fabricacao(airbus, Avioes, Pais).
+p9(Avioes):- fabricacao(bombardier, Avioes, Pais), utilizam(Avioes, lufthansa).
+p10(Sede):- fabricacao(Empresa, boeing_747, _), fabricantes(Empresa, Sede).
     
+    
+    
+    
+p8(Avioes, Empresas):- findall((AVIOES), (fabricacao(embraer, Avioes, _), utilizam(Avioes, Empresas), empresa(Empresas, estados_unidos)), Result ).
+
 p7(Fabricante):- fabricacao(Fabricante, Avioes, _), utilizam(Avioes, Empresa).
+
+                
